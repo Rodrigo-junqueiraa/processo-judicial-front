@@ -1,0 +1,395 @@
+/* ─── Reset e base ─────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* ─── Layout ────────────────────────────────────────────────────────────── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* ─── Navbar ────────────────────────────────────────────────────────────── */
+.navbar {
+  background-color: #1a3a5c;
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.navbar h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ─── Card ──────────────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-header h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a3a5c;
+}
+
+/* ─── Botões ────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s, opacity 0.2s;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary   { background-color: #1a3a5c; color: #fff; }
+.btn-primary:hover:not(:disabled) { background-color: #15304d; }
+
+.btn-success   { background-color: #198754; color: #fff; }
+.btn-success:hover:not(:disabled) { background-color: #157347; }
+
+.btn-warning   { background-color: #e6a817; color: #fff; }
+.btn-warning:hover:not(:disabled) { background-color: #cb9515; }
+
+.btn-danger    { background-color: #dc3545; color: #fff; }
+.btn-danger:hover:not(:disabled) { background-color: #bb2d3b; }
+
+.btn-secondary { background-color: #6c757d; color: #fff; }
+.btn-secondary:hover:not(:disabled) { background-color: #5c636a; }
+
+.btn-sm { padding: 5px 12px; font-size: 0.8rem; }
+
+/* ─── Formulários ───────────────────────────────────────────────────────── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+}
+
+/* 
+  FIX: Inputs com z-index e position relative para garantir que
+  o clique funcione sempre sem precisar clicar várias vezes.
+*/
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background-color: #fff;
+  color: #333;
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  /* Garante que eventos de mouse funcionem corretamente */
+  pointer-events: all;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #1a3a5c;
+  box-shadow: 0 0 0 3px rgba(26, 58, 92, 0.15);
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: #dc3545;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 0.78rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+/* ─── Tabela ────────────────────────────────────────────────────────────── */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+thead th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e9ecef;
+  transition: background-color 0.15s;
+}
+
+tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+tbody td {
+  padding: 12px 14px;
+  vertical-align: middle;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ─── Badge UF ──────────────────────────────────────────────────────────── */
+.badge-uf {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-uf.mg {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+/* ─── Modal ─────────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  /* Garante que o modal fique acima de tudo */
+  position: relative;
+  z-index: 1001;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px 0;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a3a5c;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #6c757d;
+  line-height: 1;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+.modal-body {
+  padding: 0 24px 24px;
+}
+
+/* ─── Toast / Alerta ────────────────────────────────────────────────────── */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  padding: 14px 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease;
+  max-width: 380px;
+}
+
+.toast.success { background-color: #198754; }
+.toast.error   { background-color: #dc3545; }
+.toast.info    { background-color: #0d6efd; }
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ─── Estado vazio ──────────────────────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: #6c757d;
+}
+
+.empty-state p {
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+/* ─── Loading ───────────────────────────────────────────────────────────── */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+/* ─── Confirm dialog ────────────────────────────────────────────────────── */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+}
+
+.confirm-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+.confirm-box h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #1a3a5c;
+}
+
+.confirm-box p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* ─── Responsivo ────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
