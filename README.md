@@ -1,16 +1,88 @@
-# React + Vite
+# ⚖️ Processo Judicial — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface web do sistema de cadastro e gerenciamento de processos judiciais.
 
-Currently, two official plugins are available:
+**Stack:** React 18 + Vite + Axios
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 📋 Sobre
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Frontend desenvolvido em React 18 com Vite responsável pela interface visual do sistema. Consome a API REST do backend para todas as operações.
 
-## Expanding the ESLint configuration
+**Repositório do Backend:** [processo-judicial-api](https://github.com/Rodrigo-junqueiraa/processo-judicial-api)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✅ Funcionalidades
+
+- Listagem de processos com dados principais
+- Cadastro, edição e exclusão de processos
+- Gerenciamento de andamentos por processo
+- Validação de campos no frontend
+- Notificações toast com mensagens de retorno da API
+- Confirmação antes de excluir
+- Interface responsiva
+
+---
+
+## 🖥️ Como rodar — Local
+
+### Pré-requisitos
+- Node.js 18+
+- Backend rodando em http://localhost:8000
+
+```bash
+# Instalar dependências
+npm install
+
+# Iniciar o servidor
+npm run dev
+# Disponível em http://localhost:5173
+```
+
+---
+
+## 🐳 Como rodar — Docker
+
+O Docker é orquestrado pelo backend. Clone o repositório do backend e siga as instruções lá:
+
+[processo-judicial-api](https://github.com/Rodrigo-junqueiraa/processo-judicial-api)
+
+```bash
+docker compose up -d --build
+docker exec processos_api php artisan migrate --force
+```
+
+**Disponível em:** http://localhost:5173
+
+---
+
+## 📁 Estrutura
+
+```
+processo-judicial-front/
+└── src/
+    ├── components/
+    │   ├── ProcessoForm.jsx      # Formulário de processo
+    │   ├── AndamentoForm.jsx     # Formulário de andamento
+    │   ├── Modal.jsx             # Modal reutilizável
+    │   ├── ToastContainer.jsx    # Notificações
+    │   └── ConfirmDialog.jsx     # Confirmação de exclusão
+    ├── pages/
+    │   ├── ProcessosPage.jsx     # Tela principal
+    │   └── AndamentosPage.jsx    # Tela de andamentos
+    ├── services/
+    │   └── api.js                # Comunicação com a API
+    ├── hooks/
+    │   └── useToast.js           # Hook de notificações
+    └── utils/
+        └── ufs.js                # Lista de estados brasileiros
+```
+
+---
+
+## 👤 Autor
+
+**Rodrigo Junqueira**
+GitHub: [@Rodrigo-junqueiraa](https://github.com/Rodrigo-junqueiraa)
